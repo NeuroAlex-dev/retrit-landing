@@ -1,2 +1,2 @@
-# portfolio-landing
+# retrit-landing
 my first landing portfolio
