@@ -115,6 +115,9 @@ body::before{
 .header{
   position:fixed;top:0;left:0;right:0;z-index:100;
   padding:20px 0;
+  background:rgba(240,239,234,.96);
+  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  box-shadow:0 2px 20px rgba(26,77,90,.08);
   transition:background var(--t),padding var(--t),box-shadow var(--t);
 }
 .header.stuck{
@@ -179,20 +182,15 @@ body::before{
    HERO
 ═══════════════════════════════════════ */
 .hero{
-  position:relative;min-height:100vh;
-  display:flex;align-items:center;overflow:hidden;
-  background:linear-gradient(160deg,#F0EFEA 0%,#E8D9C5 28%,#D8C5A8 52%,#E8CEAB 76%,#F0EFEA 100%);
-  background-size:300% 300%;
-  animation:gradShift 18s ease infinite;
+  position:relative;
+  overflow:hidden;
 }
-.hero-layer{
-  position:absolute;inset:-20%;
-  background:
-    radial-gradient(ellipse 70% 55% at 65% 38%,rgba(26,77,90,.1) 0%,transparent 65%),
-    radial-gradient(ellipse 55% 70% at 18% 78%,rgba(139,168,122,.14) 0%,transparent 55%),
-    radial-gradient(ellipse 40% 40% at 85% 80%,rgba(224,157,94,.06) 0%,transparent 60%);
-  will-change:transform;
+.hero-bg-img{
+  display:block;
+  width:100%;
+  height:auto;
 }
+.hero-layer{display:none}
 .hero-water{
   position:absolute;bottom:0;left:0;right:0;height:35%;
   background:linear-gradient(to top,rgba(26,77,90,.07),transparent);
@@ -210,8 +208,14 @@ body::before{
   border-color:rgba(224,157,94,.1)}
 
 .hero-in{
-  position:relative;z-index:2;
-  padding:120px 0 100px;max-width:720px;
+  position:absolute;z-index:2;
+  bottom:9%;left:50%;
+  transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;
+}
+.hero-in .btn-hero{
+  opacity:0;
+  width:260px;height:58px;
 }
 .hero-badge{
   display:inline-block;padding:8px 22px;
@@ -247,7 +251,7 @@ body::before{
   line-height:1.75;margin-bottom:44px;
 }
 .hero-desc strong{color:var(--heading);font-weight:500}
-.hero-actions{display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+.hero-actions{display:flex;align-items:center;justify-content:center;gap:28px;flex-wrap:wrap}
 .hero-spots{font-size:13px;color:var(--muted)}
 .hero-spots strong{
   font-family:var(--serif);font-size:22px;
@@ -958,35 +962,11 @@ body::before{
   01. HERO
 ═════════════════════════════════════ -->
 <section id="hero" class="hero">
-  <div class="hero-layer" id="heroLayer"></div>
-  <div class="hero-water" id="heroWater"></div>
-  <div class="hero-circle hero-circle-1"></div>
-  <div class="hero-circle hero-circle-2"></div>
-
-  <div class="wrap hero-in">
-    <div class="hero-badge rv">1–4 мая 2026 &nbsp;·&nbsp; Ладожское озеро, Карелия &nbsp;·&nbsp; 10 мест</div>
-    <h1 class="hero-h1 rv">
-      ЛАДожское
-      <em>Сатори</em>
-    </h1>
-    <p class="hero-sub rv">
-      Чёткая перезагрузка для тех, кто чувствует:<br>
-      жить по&#8209;старому больше не получается.
-    </p>
-    <p class="hero-desc rv">
-      Сатори — это внезапная ясность. Не побег от дел,<br>
-      а <strong>внутренняя опора.</strong>
-    </p>
-    <div class="hero-actions rv">
-      <a href="#for-whom" class="btn btn-primary btn-hero">Узнать о программе</a>
-      <div class="hero-spots">Осталось <strong class="spots-count">10</strong> мест из 10</div>
-    </div>
+  <img src="assets/ladoga.png" class="hero-bg-img" alt="ЛАДожское Сатори">
+  <h1 style="position:absolute;opacity:0;pointer-events:none;left:-9999px">ЛАДожское Сатори — Трансформационный ретрит</h1>
+  <div class="hero-in">
+    <a href="#for-whom" class="btn btn-primary btn-hero">Узнать о программе</a>
   </div>
-
-  <a href="#for-whom" class="hero-scroll" aria-label="Листать вниз">
-    <span class="scroll-line"></span>
-    <span>Далее</span>
-  </a>
 </section>
 
 <!-- ═════════════════════════════════════
