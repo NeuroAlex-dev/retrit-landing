@@ -237,6 +237,7 @@ body::before{
   min-width:260px;
 }
 .hero-img-book-overlay{display:none}
+.hero-nav-cover{display:none}
 .hero-badge{
   display:inline-block;padding:8px 22px;
   border:1px solid rgba(28,94,114,.22);border-radius:100px;
@@ -849,8 +850,14 @@ body::before{
 }
 @media(max-width:768px){
   /* Герой */
-  .hero{overflow:hidden;display:flex;flex-direction:column;padding-top:36px}
+  .hero{overflow:hidden;display:flex;flex-direction:column;padding-top:68px}
   .hero-bg-img{width:100%;height:auto;display:block}
+  .hero-nav-cover{
+    display:block;position:absolute;
+    top:68px;left:0;right:0;height:32px;
+    background:rgba(243,240,232,.97);
+    z-index:4;
+  }
   .hero-img-book-overlay{
     position:absolute;top:68px;right:0;
     width:32%;height:40px;
@@ -1069,6 +1076,7 @@ body::before{
 ═════════════════════════════════════ -->
 <section id="hero" class="hero">
   <img src="assets/Satori.png" class="hero-bg-img" alt="ЛАДожское Сатори">
+  <div class="hero-nav-cover"></div>
   <a href="https://t.me/yara606" target="_blank" rel="noopener" class="hero-img-book-overlay" aria-label="Забронировать"></a>
   <h1 style="position:absolute;opacity:0;pointer-events:none;left:-9999px">ЛАДожское Сатори — Трансформационный ретрит</h1>
   <div class="hero-in">
