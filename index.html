@@ -847,12 +847,24 @@ body::before{
   .step-arr{display:none}
 }
 @media(max-width:768px){
+  /* Герой */
+  .hero{overflow:visible;display:flex;flex-direction:column}
+  .hero-bg-img{width:100%;height:auto;display:block}
+  .hero-in{
+    position:relative;top:auto;left:auto;transform:none;
+    padding:20px 20px 32px;
+    background:var(--bg);
+    width:100%;box-sizing:border-box;
+  }
+  .hero-in .btn-hero{min-width:0;width:100%;text-align:center}
+
+  /* Сетки */
   .audience-grid{grid-template-columns:1fr}
-  .results-grid{grid-template-columns:1fr 1fr}
+  .results-grid{grid-template-columns:1fr}
   .team-grid{grid-template-columns:1fr}
   .prog-grid{grid-template-columns:1fr}
   .prog-extras{grid-template-columns:1fr}
-  .elem-grid{grid-template-columns:1fr 1fr}
+  .elem-grid{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr;gap:24px}
   .footer-bot{flex-direction:column;gap:8px;text-align:center}
   .why-grid{grid-template-columns:1fr;gap:20px}
@@ -860,11 +872,27 @@ body::before{
   .form-row{grid-template-columns:1fr}
   .hero-actions{flex-direction:column;align-items:flex-start;gap:14px}
   .pricing-grid{max-width:100%}
+
+  /* Секции */
+  .s,.s-alt{padding:48px 0}
+  .s-contact{min-height:260px;padding:40px 0}
+
+  /* Фото ведущих */
+  .team-ph-img{max-height:320px}
+
+  /* Кнопки */
+  .btn-contact{font-size:15px;padding:16px 32px}
+
+  /* Шапка */
+  .header-in .btn-sm{display:none}
 }
 @media(max-width:480px){
   .results-grid{grid-template-columns:1fr}
-  .elem-grid{grid-template-columns:1fr 1fr}
+  .elem-grid{grid-template-columns:1fr}
   .hero-circle{display:none}
+  .s-title{font-size:clamp(22px,7vw,32px)}
+  .footer-logo{font-size:17px}
+  .btn-contact{width:calc(100% - 40px);text-align:center}
 }
 
 /* ═══════════════════════════════════════
