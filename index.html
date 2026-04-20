@@ -16,27 +16,41 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
-/* ─── ПЕРЕМЕННЫЕ ─── */
+/* ─── ПЕРЕМЕННЫЕ — 4 СТИХИИ ─── */
 :root {
-  --bg:          #F0EFEA;   /* Туман над Ладогой */
-  --bg-alt:      #E8D9C5;   /* Берег */
-  --bg-card:     #F8F7F3;   /* карточки */
-  --text:        #2C2C2C;
-  --muted:       #5A5A5A;
-  --heading:     #1A4D5A;   /* Ладога */
-  --accent:      #E09D5E;   /* Закат на Ладоге */
-  --accent-h:    #B45F3B;   /* Карельский камень */
-  --accent-soft: #EDB87C;
-  --green:       #3D4A3A;
-  --moss:        #8BA87A;   /* Карельский мох */
-  --lavender:    #B8B0C6;   /* Сумерки */
-  --deep:        #1A4D5A;   /* Ладога */
+  /* Земля: тёплый песок, кофе с молоком */
+  --bg:          #F3F0E8;
+  --bg-card:     #FFFFFF;
+
+  /* Вода: бирюза, изумруд Ладоги */
+  --bg-alt:      #E8F4F2;
+
+  --text:        #2A2828;
+  --muted:       #5C5858;
+
+  /* Вода — глубина Ладоги */
+  --heading:     #1C5E72;
+  --deep:        #164858;
+
+  /* Огонь — закат, золото */
+  --accent:      #E07C28;
+  --accent-h:    #BE5C10;
+  --accent-soft: #F0A830;
+
+  /* Земля — карельский лес и мох */
+  --green:       #2E5A3C;
+  --moss:        #5A9868;
+
+  /* Небо — голубое с фиолетовым */
+  --lavender:    #7268A8;
+  --sky:         #5888BC;
+
   --serif:       'Cormorant Garamond', Georgia, serif;
   --sans:        'Raleway', sans-serif;
   --r:           12px;
   --r-lg:        20px;
-  --sh:          0 4px 24px rgba(26,77,90,.08);
-  --sh-md:       0 8px 40px rgba(26,77,90,.13);
+  --sh:          0 4px 24px rgba(28,94,114,.08);
+  --sh-md:       0 8px 40px rgba(28,94,114,.14);
   --t:           .3s ease;
   --w:           1160px;
 }
@@ -73,7 +87,7 @@ body::before{
   transition:background var(--t),color var(--t),transform var(--t),box-shadow var(--t);
 }
 .btn-primary{background:var(--accent);color:#fff}
-.btn-primary:hover{background:var(--accent-h);transform:translateY(-2px);box-shadow:0 8px 24px rgba(224,157,94,.35)}
+.btn-primary:hover{background:var(--accent-h);transform:translateY(-2px);box-shadow:0 8px 24px rgba(224,124,40,.35)}
 .btn-outline{background:transparent;color:var(--heading);border:1.5px solid var(--heading)}
 .btn-outline:hover{background:var(--heading);color:#fff;transform:translateY(-2px)}
 .btn-sm{padding:10px 22px;font-size:12px;background:var(--accent);color:#fff;border-radius:100px}
@@ -82,13 +96,19 @@ body::before{
 .btn-full{width:100%;padding:18px;font-size:15px;justify-content:center}
 
 @keyframes breathe{
-  0%,100%{box-shadow:0 0 0 0 rgba(224,157,94,.35)}
-  50%{box-shadow:0 0 0 18px rgba(224,157,94,0)}
+  0%,100%{box-shadow:0 0 0 0 rgba(224,124,40,.35)}
+  50%{box-shadow:0 0 0 18px rgba(224,124,40,0)}
 }
 
-/* ─── СЕКЦИИ ─── */
-.s{padding:100px 0;background:var(--bg)}
-.s-alt{padding:100px 0;background:var(--bg-alt)}
+/* ─── СЕКЦИИ — 4 СТИХИИ ─── */
+.s{
+  padding:100px 0;
+  background:linear-gradient(160deg,#F3F0E8 0%,#EDF5F2 100%); /* Земля → Вода */
+}
+.s-alt{
+  padding:100px 0;
+  background:linear-gradient(160deg,#E8F4F2 0%,#EEF4FA 100%); /* Вода → Небо */
+}
 @media(max-width:768px){.s,.s-alt{padding:64px 0}}
 
 .eyebrow{
@@ -115,16 +135,16 @@ body::before{
 .header{
   position:fixed;top:0;left:0;right:0;z-index:100;
   padding:20px 0;
-  background:rgba(240,239,234,.96);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
-  box-shadow:0 2px 20px rgba(26,77,90,.08);
+  background:rgba(243,240,232,.97);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  box-shadow:0 2px 24px rgba(28,94,114,.09);
   transition:background var(--t),padding var(--t),box-shadow var(--t);
 }
 .header.stuck{
-  background:rgba(240,239,234,.94);
-  backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);
+  background:rgba(243,240,232,.97);
+  backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
   padding:12px 0;
-  box-shadow:0 2px 20px rgba(26,77,90,.08);
+  box-shadow:0 2px 24px rgba(28,94,114,.09);
 }
 .header-in{display:flex;align-items:center;gap:32px}
 .logo{
@@ -193,19 +213,19 @@ body::before{
 .hero-layer{display:none}
 .hero-water{
   position:absolute;bottom:0;left:0;right:0;height:35%;
-  background:linear-gradient(to top,rgba(26,77,90,.07),transparent);
+  background:linear-gradient(to top,rgba(28,94,114,.07),transparent);
   will-change:transform;
 }
 /* Декоративные круги */
 .hero-circle{
   position:absolute;border-radius:50%;
-  border:1px solid rgba(26,77,90,.08);
+  border:1px solid rgba(28,94,114,.08);
   pointer-events:none;
 }
 .hero-circle-1{width:600px;height:600px;top:-200px;right:-200px;
-  background:radial-gradient(circle,rgba(224,157,94,.04),transparent 70%)}
+  background:radial-gradient(circle,rgba(224,124,40,.04),transparent 70%)}
 .hero-circle-2{width:300px;height:300px;bottom:80px;left:60%;
-  border-color:rgba(224,157,94,.1)}
+  border-color:rgba(224,124,40,.1)}
 
 .hero-in{
   position:absolute;z-index:2;
@@ -218,7 +238,7 @@ body::before{
 }
 .hero-badge{
   display:inline-block;padding:8px 22px;
-  border:1px solid rgba(26,77,90,.22);border-radius:100px;
+  border:1px solid rgba(28,94,114,.22);border-radius:100px;
   font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
   color:var(--heading);margin-bottom:36px;
   background:rgba(240,239,234,.5);
@@ -286,13 +306,13 @@ body::before{
 .aud-card{
   background:var(--bg-card);border-radius:var(--r-lg);
   padding:36px 28px;
-  border:1px solid rgba(26,77,90,.07);
+  border:1px solid rgba(28,94,114,.07);
   transition:transform var(--t),box-shadow var(--t);
   position:relative;overflow:hidden;
 }
 .aud-card::before{
   content:'';position:absolute;top:0;left:0;right:0;height:3px;
-  background:linear-gradient(90deg,var(--accent),var(--accent-soft));
+  background:linear-gradient(90deg,var(--heading),var(--moss),var(--accent-soft),var(--accent));
   transform:scaleX(0);transform-origin:left;
   transition:transform .4s ease;
 }
@@ -309,9 +329,9 @@ body::before{
 .aud-card p{font-size:14px;color:var(--muted);line-height:1.75}
 
 .aud-result{
-  background:linear-gradient(135deg,rgba(224,157,94,.06) 0%,rgba(26,77,90,.04) 100%);
+  background:linear-gradient(135deg,rgba(90,152,104,.07) 0%,rgba(28,94,114,.06) 50%,rgba(114,104,168,.05) 100%);
   border-radius:var(--r-lg);padding:40px;text-align:center;
-  border:1px solid rgba(26,77,90,.09);
+  border:1px solid rgba(28,94,114,.1);
 }
 .aud-result p{
   font-family:var(--serif);font-size:21px;font-weight:300;
@@ -337,12 +357,12 @@ body::before{
   padding:14px 20px;border-radius:var(--r);
   font-size:14px;color:var(--muted);
   background:var(--bg-card);
-  border:1px solid rgba(26,77,90,.06);
+  border:1px solid rgba(28,94,114,.06);
   transition:border-color var(--t);
 }
 .why-list.yes li{
   color:var(--heading);
-  border-color:rgba(224,157,94,.18);
+  border-color:rgba(224,124,40,.18);
 }
 .why-vs{
   display:flex;align-items:center;justify-content:center;padding-top:36px;
@@ -363,9 +383,9 @@ body::before{
 }
 .satori-note{
   margin-top:24px;padding:20px 24px;
-  background:rgba(26,77,90,.04);border-radius:var(--r);
+  background:rgba(28,94,114,.04);border-radius:var(--r);
   font-size:14px;color:var(--muted);
-  border-left:2px solid rgba(26,77,90,.2);
+  border-left:2px solid rgba(28,94,114,.2);
 }
 .satori-note strong{color:var(--heading)}
 
@@ -378,7 +398,7 @@ body::before{
 .res-card{
   padding:32px 24px;background:var(--bg-card);
   border-radius:var(--r-lg);
-  border:1px solid rgba(26,77,90,.07);
+  border:1px solid rgba(28,94,114,.07);
   transition:transform var(--t),box-shadow var(--t);
 }
 .res-card:hover{transform:translateY(-4px);box-shadow:var(--sh)}
@@ -402,7 +422,7 @@ body::before{
 .step{
   background:var(--bg-card);border-radius:var(--r-lg);
   padding:32px 24px;text-align:center;
-  border:1px solid rgba(26,77,90,.07);
+  border:1px solid rgba(28,94,114,.07);
 }
 .step-n{
   font-family:var(--serif);font-size:52px;font-weight:300;
@@ -422,10 +442,10 @@ body::before{
   padding:9px 18px;border-radius:100px;
   font-size:13px;color:var(--heading);
   background:var(--bg-card);
-  border:1.5px solid rgba(26,77,90,.18);
+  border:1.5px solid rgba(28,94,114,.18);
   transition:border-color var(--t),background var(--t);
 }
-.tag:hover{border-color:var(--accent);background:rgba(224,157,94,.05)}
+.tag:hover{border-color:var(--accent);background:rgba(224,124,40,.05)}
 
 /* ═══════════════════════════════════════
    ВЕДУЩИЕ
@@ -433,12 +453,18 @@ body::before{
 .team-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-bottom:32px}
 .team-card{
   background:var(--bg-card);border-radius:var(--r-lg);
-  overflow:hidden;border:1px solid rgba(26,77,90,.07);
+  overflow:hidden;border:1px solid rgba(28,94,114,.07);
   transition:box-shadow var(--t);
 }
 .team-card:hover{box-shadow:var(--sh-md)}
+.team-ph-img{
+  width:100%;height:auto;max-height:260px;
+  object-fit:contain;object-position:center top;
+  display:block;
+}
 .team-photo{
-  height:280px;overflow:hidden;position:relative;
+  overflow:hidden;position:relative;
+  background:var(--bg-alt);
 }
 .team-ph{
   width:100%;height:100%;
@@ -468,7 +494,7 @@ body::before{
 .team-role{
   font-size:11px;font-weight:500;letter-spacing:.06em;
   color:var(--accent);padding:4px 12px;
-  border:1px solid rgba(224,157,94,.3);border-radius:100px;
+  border:1px solid rgba(224,124,40,.3);border-radius:100px;
 }
 .team-bio p{font-size:14px;color:var(--muted);line-height:1.75;margin-bottom:10px}
 .team-accent{
@@ -477,9 +503,9 @@ body::before{
   margin-top:14px !important;font-size:14px !important;
 }
 .team-together{
-  background:linear-gradient(135deg,rgba(26,77,90,.05),rgba(224,157,94,.05));
+  background:linear-gradient(135deg,rgba(28,94,114,.05),rgba(224,124,40,.05));
   border-radius:var(--r-lg);padding:32px 40px;
-  text-align:center;border:1px solid rgba(26,77,90,.09);
+  text-align:center;border:1px solid rgba(28,94,114,.09);
   margin-bottom:32px;
 }
 .team-together p{
@@ -497,7 +523,7 @@ body::before{
 }
 .day-card{
   background:var(--bg-card);border-radius:var(--r-lg);
-  padding:24px 20px;border:1px solid rgba(26,77,90,.07);
+  padding:24px 20px;border:1px solid rgba(28,94,114,.07);
   transition:transform var(--t),box-shadow var(--t);
 }
 .day-card:hover{transform:translateY(-4px);box-shadow:var(--sh)}
@@ -521,16 +547,16 @@ body::before{
 
 .prog-extras{display:grid;grid-template-columns:1fr 1fr;gap:16px}
 .pex,.pbonus{border-radius:var(--r-lg);padding:28px}
-.pex{background:var(--bg-card);border:1px solid rgba(224,157,94,.2)}
+.pex{background:var(--bg-card);border:1px solid rgba(224,124,40,.2)}
 .pbonus{
-  background:linear-gradient(135deg,rgba(26,77,90,.04),rgba(139,168,122,.07));
+  background:linear-gradient(135deg,rgba(28,94,114,.04),rgba(139,168,122,.07));
   border:1px solid rgba(139,168,122,.25);
 }
 .ptag{
   display:inline-block;padding:4px 14px;border-radius:100px;
   font-size:11px;font-weight:600;letter-spacing:.07em;margin-bottom:10px;
 }
-.ptag-gold{background:rgba(224,157,94,.13);color:var(--accent-h)}
+.ptag-gold{background:rgba(224,124,40,.13);color:var(--accent-h)}
 .ptag-green{background:rgba(139,168,122,.18);color:var(--green)}
 .pex h4,.pbonus h4{
   font-family:var(--serif);font-size:18px;font-weight:500;
@@ -552,7 +578,7 @@ body::before{
 .elem{
   padding:28px 16px;background:var(--bg-card);
   border-radius:var(--r-lg);text-align:center;
-  border:1px solid rgba(26,77,90,.07);
+  border:1px solid rgba(28,94,114,.07);
   transition:transform var(--t);
 }
 .elem:hover{transform:translateY(-3px)}
@@ -571,7 +597,7 @@ body::before{
 .venue-ico{
   flex-shrink:0;width:42px;height:42px;
   display:flex;align-items:center;justify-content:center;
-  background:rgba(224,157,94,.1);border-radius:10px;
+  background:rgba(224,124,40,.1);border-radius:10px;
   color:var(--accent);font-size:17px;margin-top:2px;
 }
 .venue-item strong{
@@ -581,7 +607,7 @@ body::before{
 .venue-item p{font-size:13px;color:var(--muted);line-height:1.65}
 .venue-quote{
   background:var(--bg-card);border-radius:var(--r-lg);
-  padding:36px;border:1px solid rgba(26,77,90,.07);
+  padding:36px;border:1px solid rgba(28,94,114,.07);
   font-family:var(--serif);font-size:19px;
   font-style:italic;font-weight:300;color:var(--heading);
   line-height:1.65;position:relative;
@@ -645,13 +671,13 @@ body::before{
 }
 .pc{
   border-radius:var(--r-lg);padding:40px;
-  border:1px solid rgba(26,77,90,.1);
+  border:1px solid rgba(28,94,114,.1);
   transition:transform var(--t),box-shadow var(--t);
 }
 .pc:hover{transform:translateY(-4px);box-shadow:var(--sh-md)}
 .pc-main{
   background:var(--bg-card);
-  border-color:rgba(224,157,94,.28);
+  border-color:rgba(224,124,40,.28);
   position:relative;overflow:hidden;
 }
 .pc-main::after{
@@ -671,8 +697,8 @@ body::before{
   line-height:1;margin-bottom:20px;
 }
 .pc-breakdown{
-  border-top:1px solid rgba(26,77,90,.1);
-  border-bottom:1px solid rgba(26,77,90,.1);
+  border-top:1px solid rgba(28,94,114,.1);
+  border-bottom:1px solid rgba(28,94,114,.1);
   padding:14px 0;margin-bottom:20px;
 }
 .pc-line{
@@ -694,7 +720,7 @@ body::before{
 }
 .pc-return{
   margin-top:16px;padding:14px 20px;
-  background:rgba(26,77,90,.04);border-radius:var(--r);
+  background:rgba(28,94,114,.04);border-radius:var(--r);
   font-size:12px;color:var(--muted);line-height:1.6;
 }
 .pc-return strong{color:var(--heading)}
@@ -708,7 +734,7 @@ body::before{
 ═══════════════════════════════════════ */
 .faq-list{max-width:740px;display:flex;flex-direction:column;gap:4px}
 .faq-item{border-radius:var(--r);overflow:hidden;
-  background:var(--bg-card);border:1px solid rgba(26,77,90,.07)}
+  background:var(--bg-card);border:1px solid rgba(28,94,114,.07)}
 .faq-q{
   width:100%;text-align:left;padding:20px 26px;
   font-family:var(--serif);font-size:18px;font-weight:500;
@@ -750,7 +776,7 @@ body::before{
 .cta-form input,.cta-form select{
   width:100%;padding:15px 18px;
   background:var(--bg-card);
-  border:1px solid rgba(26,77,90,.16);
+  border:1px solid rgba(28,94,114,.16);
   border-radius:var(--r);
   font-family:var(--sans);font-size:14px;color:var(--text);
   transition:border-color var(--t),box-shadow var(--t);
@@ -762,7 +788,7 @@ body::before{
   padding-right:38px;
 }
 .cta-form input:focus,.cta-form select:focus{
-  border-color:var(--accent);box-shadow:0 0 0 3px rgba(224,157,94,.12);
+  border-color:var(--accent);box-shadow:0 0 0 3px rgba(224,124,40,.12);
 }
 .cta-form input::placeholder{color:var(--muted);opacity:.55}
 .form-consent{font-size:11px;color:var(--muted);text-align:left;line-height:1.6}
@@ -783,9 +809,14 @@ body::before{
    ФУТЕР
 ═══════════════════════════════════════ */
 .footer{
-  background:var(--bg-alt);padding:60px 0 32px;
-  border-top:1px solid rgba(26,77,90,.1);
+  background:linear-gradient(160deg,var(--bg) 0%,var(--bg-alt) 100%);
+  padding:60px 0 32px;
+  border-top:none;
+  color:var(--text);
 }
+.footer-brand p,.footer-nav a,.footer-contact p,.footer-bot{color:var(--muted)}
+.footer-logo,.footer-nav a:hover,.footer-contact a:hover{color:var(--heading)}
+.footer-bot{border-top-color:rgba(28,94,114,.12)}
 .footer-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:40px;margin-bottom:40px}
 .footer-logo{
   font-family:var(--serif);font-size:20px;font-weight:500;
@@ -799,7 +830,7 @@ body::before{
 .footer-contact p{font-size:13px;color:var(--muted);margin-bottom:7px}
 .footer-bot{
   display:flex;justify-content:space-between;align-items:center;
-  padding-top:24px;border-top:1px solid rgba(26,77,90,.08);
+  padding-top:24px;border-top:1px solid rgba(28,94,114,.08);
   font-size:12px;color:var(--muted);
 }
 .footer-bot a{transition:color var(--t)}
@@ -843,11 +874,11 @@ body::before{
 /* ─── SCROLL PROGRESS BAR ─── */
 .scroll-progress{
   position:fixed;top:0;left:0;height:2px;width:0;z-index:201;
-  background:linear-gradient(90deg,var(--accent),var(--accent-soft),#EDD090,var(--accent));
-  background-size:200% auto;
-  animation:shimmer 2.5s linear infinite;
+  background:linear-gradient(90deg,#1C5E72,#5A9868,#F0A830,#E07C28,#7268A8,#1C5E72);
+  background-size:300% auto;
+  animation:shimmer 4s linear infinite;
   pointer-events:none;
-  box-shadow:0 0 8px rgba(224,157,94,.5);
+  box-shadow:0 0 8px rgba(224,124,40,.45);
 }
 
 /* ─── KEYFRAMES ─── */
@@ -895,16 +926,16 @@ body::before{
 .rv-d5{transition-delay:.5s}
 
 /* ─── ENHANCED CARD HOVERS ─── */
-.aud-card:hover{transform:translateY(-10px);box-shadow:0 22px 64px rgba(26,77,90,.17)}
-.res-card:hover{transform:translateY(-7px);box-shadow:0 18px 52px rgba(26,77,90,.14)}
-.day-card:hover{transform:translateY(-7px);box-shadow:0 16px 44px rgba(26,77,90,.13)}
-.team-card:hover{box-shadow:0 28px 72px rgba(26,77,90,.17)}
+.aud-card:hover{transform:translateY(-10px);box-shadow:0 22px 64px rgba(28,94,114,.17)}
+.res-card:hover{transform:translateY(-7px);box-shadow:0 18px 52px rgba(28,94,114,.14)}
+.day-card:hover{transform:translateY(-7px);box-shadow:0 16px 44px rgba(28,94,114,.13)}
+.team-card:hover{box-shadow:0 28px 72px rgba(28,94,114,.17)}
 .team-ph{transition:transform .6s cubic-bezier(.25,.46,.45,.94)}
 .team-card:hover .team-ph{transform:scale(1.06)}
 .step{transition:transform var(--t),box-shadow var(--t)}
 .step:hover{transform:translateY(-5px);box-shadow:var(--sh-md)}
 .elem{transition:transform var(--t),box-shadow var(--t)}
-.elem:hover{transform:translateY(-7px);box-shadow:0 14px 36px rgba(26,77,90,.11)}
+.elem:hover{transform:translateY(-7px);box-shadow:0 14px 36px rgba(28,94,114,.11)}
 .elem-sym{display:block;transition:transform .4s ease,color .3s}
 .elem:hover .elem-sym{transform:scale(1.25);color:var(--accent)}
 
@@ -916,8 +947,8 @@ body::before{
 .tag{transition:border-color var(--t),background var(--t),transform var(--t),box-shadow var(--t)}
 .tag:hover{
   border-color:var(--accent);
-  background:rgba(224,157,94,.08);
-  box-shadow:0 4px 18px rgba(224,157,94,.18);
+  background:rgba(224,124,40,.08);
+  box-shadow:0 4px 18px rgba(224,124,40,.18);
   transform:translateY(-2px);
 }
 
@@ -932,21 +963,21 @@ body::before{
 .nav a:hover::after{transform:scaleX(1)}
 
 /* ─── BUTTON ENHANCED ─── */
-.btn-primary:hover{box-shadow:0 10px 36px rgba(224,157,94,.45)}
-.btn-outline:hover{box-shadow:0 8px 28px rgba(26,77,90,.28)}
+.btn-primary:hover{box-shadow:0 10px 36px rgba(224,124,40,.45)}
+.btn-outline:hover{box-shadow:0 8px 28px rgba(28,94,114,.28)}
 
 /* ─── VENUE ITEM HOVER ─── */
 .venue-item{transition:transform var(--t)}
 .venue-item:hover{transform:translateX(6px)}
 .venue-ico{transition:background var(--t),transform var(--t)}
-.venue-item:hover .venue-ico{background:rgba(224,157,94,.2);transform:scale(1.1)}
+.venue-item:hover .venue-ico{background:rgba(224,124,40,.2);transform:scale(1.1)}
 
 /* ─── FAQ HOVER ─── */
 .faq-item{transition:box-shadow var(--t),border-color var(--t)}
-.faq-item:not(.open):hover{box-shadow:var(--sh);border-color:rgba(224,157,94,.2)}
+.faq-item:not(.open):hover{box-shadow:var(--sh);border-color:rgba(224,124,40,.2)}
 
 /* ─── TEAM CARD GLOW ─── */
-.pc-main:hover{box-shadow:0 24px 72px rgba(224,157,94,.18) !important}
+.pc-main:hover{box-shadow:0 24px 72px rgba(224,124,40,.18) !important}
 
 /* ─── FOOTER LINKS ─── */
 .footer-nav a{position:relative}
@@ -967,7 +998,7 @@ body::before{
 <!-- ═════ HEADER ═════ -->
 <header class="header" id="header">
   <div class="wrap header-in">
-    <a href="#hero" class="logo">ЛАД<span>ожское</span> Сатори</a>
+    <a href="#hero" class="logo">ЛАД<span>ожское</span> СаТОРи</a>
     <nav class="nav">
       <a href="#for-whom">Для кого</a>
       <a href="#program">Программа</a>
@@ -991,7 +1022,7 @@ body::before{
     <a href="#pricing">Стоимость</a>
     <a href="#faq">FAQ</a>
   </nav>
-  <a href="#cta" class="btn btn-primary">Забронировать место</a>
+  <a href="https://t.me/yara606" target="_blank" rel="noopener" class="btn btn-primary">Забронировать место</a>
 </div>
 
 <main>
@@ -1118,6 +1149,9 @@ body::before{
         <p>Люди, которые говорят на одном языке с вами</p>
       </div>
     </div>
+    <div style="text-align:center;margin-top:40px" class="rv">
+      <a href="https://t.me/yara606" target="_blank" rel="noopener" class="btn btn-primary">Забронировать место</a>
+    </div>
   </div>
 </section>
 
@@ -1171,9 +1205,7 @@ body::before{
     <div class="team-grid">
       <div class="team-card rv">
         <div class="team-photo">
-          <div class="team-ph team-ph-s">С
-            <span class="team-ph-label">Фото ведущего</span>
-          </div>
+          <img src="assets/Sergey.jpg" alt="Сергей Дудоров" class="team-ph-img">
         </div>
         <div class="team-bio">
           <h3>Сергей Дудоров</h3>
@@ -1190,9 +1222,7 @@ body::before{
 
       <div class="team-card rv rv-d1">
         <div class="team-photo">
-          <div class="team-ph team-ph-y">Я
-            <span class="team-ph-label">Фото ведущей</span>
-          </div>
+          <img src="assets/Yara.jpg" alt="Яра Богданова" class="team-ph-img">
         </div>
         <div class="team-bio">
           <h3>Яра Богданова</h3>
@@ -1214,7 +1244,7 @@ body::before{
       <p>Почти индивидуальная работа по цене групповой.</p>
     </div>
     <div class="team-cta rv">
-      <a href="#cta" class="btn btn-primary">Забронировать место</a>
+      <a href="https://t.me/yara606" target="_blank" rel="noopener" class="btn btn-primary">Забронировать место</a>
     </div>
   </div>
 </section>
@@ -1299,15 +1329,12 @@ body::before{
 
     <div class="prog-extras rv">
       <div class="pex">
-        <span class="ptag ptag-gold">+ 10 000 ₽</span>
         <h4>Дополнительные сутки (4–5 мая)</h4>
         <p>Глубокая индивидуальная проработка запросов, программ и стратегий. Дополнительные практики на усиление и балансировку личности.</p>
       </div>
       <div class="pbonus">
-        <span class="ptag ptag-green">Бесплатно для всех</span>
         <h4>5 мая — Секретная практика</h4>
         <p>Практика у Ладоги через проводников Яры и Сергея — на расширение, прорыв энергетических и финансовых возможностей.</p>
-        <p>Офлайн — для участников доп. дня. <strong>Онлайн — для всех участников бесплатно.</strong></p>
       </div>
     </div>
   </div>
@@ -1468,7 +1495,7 @@ body::before{
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-brand">
-        <div class="footer-logo">ЛАД<span>ожское</span> Сатори</div>
+        <div class="footer-logo">ЛАД<span>ожское</span> СаТОРи</div>
         <p>Закрытый трансформационный ретрит.<br>Карелия, 1–4 мая 2026.</p>
       </div>
       <nav class="footer-nav">
@@ -1484,7 +1511,7 @@ body::before{
       </div>
     </div>
     <div class="footer-bot">
-      <p>© 2026 ЛАДожское Сатори</p>
+      <p>© 2026 ЛАДожское СаТОРи</p>
 
     </div>
   </div>
