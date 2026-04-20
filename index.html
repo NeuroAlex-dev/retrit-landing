@@ -848,13 +848,13 @@ body::before{
 }
 @media(max-width:768px){
   /* Герой */
-  .hero{overflow:hidden;position:relative}
+  .hero{overflow:hidden;display:flex;flex-direction:column}
   .hero-bg-img{width:100%;height:auto;display:block}
   .hero-in{
-    position:absolute;
-    bottom:20px;top:auto;
-    left:50%;transform:translateX(-50%);
-    width:calc(100% - 40px);
+    position:relative;top:auto;left:auto;transform:none;
+    padding:16px 20px 20px;
+    background:var(--bg);
+    width:100%;box-sizing:border-box;
   }
   .hero-in .btn-hero{min-width:0;width:100%;text-align:center}
 
