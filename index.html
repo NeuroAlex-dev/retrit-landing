@@ -11,6 +11,9 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="ru_RU">
   <meta name="theme-color" content="#F0EFEA">
+  <script>
+    (function(){var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark')}})();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -54,6 +57,80 @@
   --t:           .3s ease;
   --w:           1160px;
 }
+
+/* ─── ТЁМНАЯ ТЕМА ─── */
+[data-theme="dark"]{
+  --bg:          #0d1018;
+  --bg-alt:      #111520;
+  --bg-card:     #191c28;
+  --text:        #ddd8ce;
+  --muted:       #8a8790;
+  --heading:     #c8b088;
+  --deep:        #a09068;
+  --accent:      #9b2020;
+  --accent-h:    #7a1515;
+  --accent-soft: #c03030;
+  --sh:          0 4px 24px rgba(0,0,0,.45);
+  --sh-md:       0 8px 40px rgba(0,0,0,.6);
+}
+[data-theme="dark"] body{background:var(--bg)}
+[data-theme="dark"] .s{background:linear-gradient(160deg,#0d1018 0%,#101420 100%)}
+[data-theme="dark"] .s-alt{background:linear-gradient(160deg,#101420 0%,#0d1018 100%)}
+[data-theme="dark"] .s-tagline{background:var(--bg)}
+[data-theme="dark"] .header,
+[data-theme="dark"] .header.stuck{background:rgba(13,16,24,.97);box-shadow:0 2px 24px rgba(0,0,0,.4)}
+[data-theme="dark"] .mmenu{background:var(--bg)}
+[data-theme="dark"] .footer{background:linear-gradient(160deg,#0d1018 0%,#101420 100%)}
+[data-theme="dark"] .footer-bot{border-top-color:rgba(200,176,136,.1)}
+[data-theme="dark"] .aud-result{background:linear-gradient(135deg,rgba(155,32,32,.08),rgba(200,176,136,.06));border-color:rgba(200,176,136,.12)}
+[data-theme="dark"] .why-list li{background:var(--bg-card);border-color:rgba(200,176,136,.08)}
+[data-theme="dark"] .why-list.yes li{border-color:rgba(155,32,32,.25)}
+[data-theme="dark"] .satori-note{background:rgba(200,176,136,.04);border-color:rgba(200,176,136,.15)}
+[data-theme="dark"] .team-together{background:linear-gradient(135deg,rgba(200,176,136,.05),rgba(155,32,32,.06));border-color:rgba(200,176,136,.1)}
+[data-theme="dark"] .pbonus{background:linear-gradient(135deg,rgba(155,32,32,.06),rgba(200,176,136,.05));border-color:rgba(200,176,136,.15)}
+[data-theme="dark"] .pex{border-color:rgba(155,32,32,.25)}
+[data-theme="dark"] .venue-ico{background:rgba(155,32,32,.15)}
+[data-theme="dark"] .tagline-box{background:rgba(0,0,0,.7)}
+[data-theme="dark"] .team-ph-label{background:rgba(13,16,24,.85);color:var(--heading)}
+[data-theme="dark"] .aud-card{background:var(--bg-card);border-color:rgba(200,176,136,.08)}
+[data-theme="dark"] .burger span{background:var(--heading)}
+[data-theme="dark"] .scroll-progress{background:var(--accent)}
+[data-theme="dark"] .pc-main{background:var(--bg-card);border-color:rgba(155,32,32,.35)}
+[data-theme="dark"] .pc-extra{background:var(--bg)}
+[data-theme="dark"] .faq-item{background:var(--bg-card);border-color:rgba(200,176,136,.08)}
+[data-theme="dark"] .why-quote{background:var(--bg-card)}
+[data-theme="dark"] .tag{background:var(--bg-card);border-color:rgba(200,176,136,.15)}
+[data-theme="dark"] .tag:hover{border-color:var(--accent);background:rgba(155,32,32,.08)}
+[data-theme="dark"] .elem{background:var(--bg-card);border-color:rgba(200,176,136,.08)}
+[data-theme="dark"] .venue-quote{background:var(--bg-card);border-color:rgba(200,176,136,.08)}
+[data-theme="dark"] .step{background:var(--bg-card);border-color:rgba(200,176,136,.08)}
+[data-theme="dark"] .res-card{background:var(--bg-card);border-color:rgba(200,176,136,.08)}
+[data-theme="dark"] .day-card{background:var(--bg-card);border-color:rgba(200,176,136,.08)}
+[data-theme="dark"] .team-card{background:var(--bg-card);border-color:rgba(200,176,136,.08)}
+[data-theme="dark"] .team-photo{background:var(--bg-alt)}
+[data-theme="dark"] .cta-form input,
+[data-theme="dark"] .cta-form select{background:var(--bg-card);border-color:rgba(200,176,136,.15);color:var(--text)}
+[data-theme="dark"] .cta-form input::placeholder{color:var(--muted)}
+[data-theme="dark"] .pc-breakdown{border-color:rgba(200,176,136,.1)}
+
+/* ─── ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ ─── */
+.theme-toggle{
+  display:flex;align-items:center;justify-content:center;
+  width:36px;height:36px;border-radius:50%;
+  font-size:18px;line-height:1;
+  background:rgba(28,94,114,.08);
+  border:1.5px solid rgba(28,94,114,.15);
+  color:var(--heading);
+  transition:background var(--t),border-color var(--t),transform var(--t);
+  cursor:pointer;flex-shrink:0;
+}
+.theme-toggle:hover{background:rgba(28,94,114,.15);transform:rotate(20deg)}
+[data-theme="dark"] .theme-toggle{
+  background:rgba(200,176,136,.08);
+  border-color:rgba(200,176,136,.2);
+  color:var(--heading);
+}
+[data-theme="dark"] .theme-toggle:hover{background:rgba(200,176,136,.15)}
 
 /* ─── RESET ─── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -1063,6 +1140,7 @@ body::before{
       <a href="#faq">FAQ</a>
     </nav>
     <a href="https://t.me/m/VPiK_bHgYjE6" target="_blank" rel="noopener" class="btn btn-sm">Узнать подробности</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">☀</button>
     <button class="burger" id="burger" aria-label="Открыть меню">
       <span></span><span></span><span></span>
     </button>
@@ -1536,6 +1614,19 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', () => {
     header.classList.toggle('stuck', window.scrollY > 60);
   }, { passive: true });
+
+  /* ── ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ ── */
+  const themeToggle = document.getElementById('themeToggle');
+  function applyTheme(dark){
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    themeToggle.textContent = dark ? '🌙' : '☀';
+    themeToggle.setAttribute('aria-label', dark ? 'Светлая тема' : 'Тёмная тема');
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+  }
+  applyTheme(document.documentElement.getAttribute('data-theme') === 'dark');
+  themeToggle.addEventListener('click', () => {
+    applyTheme(document.documentElement.getAttribute('data-theme') !== 'dark');
+  });
 
   /* ── БУРГЕР / МОБИЛЬНОЕ МЕНЮ ── */
   const burger = document.getElementById('burger');
