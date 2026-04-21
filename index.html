@@ -118,7 +118,7 @@ body::before{
 }
 .s-title{
   font-family:var(--serif);font-size:clamp(32px,4vw,52px);
-  font-weight:400;color:var(--heading);line-height:1.2;margin-bottom:56px;
+  font-weight:400;color:var(--heading);line-height:1.2;margin-bottom:24px;
 }
 @media(max-width:768px){.s-title{margin-bottom:36px}}
 
@@ -318,9 +318,11 @@ body::before{
 .aud-card:hover{transform:translateY(-5px);box-shadow:var(--sh-md)}
 .aud-card:hover::before{transform:scaleX(1)}
 .aud-num{
-  font-family:var(--serif);font-size:11px;font-weight:600;
-  letter-spacing:.2em;color:var(--accent);margin-bottom:16px;opacity:.7;
+  font-family:var(--serif);font-size:13px;font-weight:600;
+  letter-spacing:.15em;color:var(--accent);opacity:.8;
+  margin-right:10px;flex-shrink:0;
 }
+.aud-card h3{display:flex;align-items:baseline;gap:0}
 .aud-card h3{
   font-family:var(--serif);font-size:21px;font-weight:500;
   color:var(--heading);margin-bottom:12px;line-height:1.3;
@@ -1109,19 +1111,16 @@ body::before{
 
     <div class="audience-grid">
       <div class="aud-card rv">
-        <div class="aud-num">I</div>
-        <h3>Ищете опору в тонком</h3>
-        <p>Медитации, энергии, ретриты — ваш мир. Многое поняли про себя. Но деньги утекают, бизнес не растёт. Разрыв между «высоким» и «низким» — сложно открыто хотеть материального.</p>
+        <h3><span class="aud-num">I.</span> Ищет опору в духовном мире</h3>
+        <p>Медитации, энергия, ретриты стали частью вашей жизни. Вы многое про себя поняли, стали глубже и осознаннее. Но при этом деньги как будто утекают, а бизнес не растёт так, как хотелось бы. Возникает внутренний разрыв: между «высоким» и «земным», между духовностью и материальным. Но хочется большего — в доходе, в стабильности, в реализации.</p>
       </div>
       <div class="aud-card rv rv-d1">
-        <div class="aud-num">II</div>
-        <h3>Привыкли опираться на твёрдое</h3>
-        <p>Работаете в традиционной нише, много трудитесь, держите удар. Старые методы перестали работать, новые — непонятны. Вкладываете те же усилия, а прибыль не растёт.</p>
+        <h3><span class="aud-num">II.</span> Привык опираться только на материальное</h3>
+        <p>Работаете в традиционной нише, много трудитесь, держите удар. Но старые методы перестали работать, а прибыль не растёт, в отличие от напряжения.</p>
       </div>
       <div class="aud-card rv rv-d2">
-        <div class="aud-num">III</div>
-        <h3>В поиске целостности</h3>
-        <p>Есть и бизнес, и понимание энергий — всё вроде неплохо. Но внутри живёт тонкое сомнение: «А точно ли я на правильном пути?» Нужен внутренний компас.</p>
+        <h3><span class="aud-num">III.</span> В поисках целостности</h3>
+        <p>Есть бизнес и понимание связей духовного и материального. Но внутри живёт сомнение — «А точно ли я на правильном пути?». Нужна ясность.</p>
       </div>
     </div>
 
