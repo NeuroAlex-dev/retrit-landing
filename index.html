@@ -95,6 +95,7 @@
 [data-theme="dark"] .aud-card{background:var(--bg-card);border-color:rgba(200,176,136,.08)}
 [data-theme="dark"] .burger span{background:var(--heading)}
 [data-theme="dark"] .scroll-progress{background:var(--accent)}
+@media(max-width:768px){[data-theme="dark"] .hero-in{background:var(--bg)}}
 [data-theme="dark"] .pc-main{background:var(--bg-card);border-color:rgba(155,32,32,.35)}
 [data-theme="dark"] .pc-extra{background:var(--bg)}
 [data-theme="dark"] .faq-item{background:var(--bg-card);border-color:rgba(200,176,136,.08)}
@@ -952,52 +953,120 @@ body::before{
   .steps{grid-template-columns:1fr;gap:12px}
   .step-arr{display:none}
 }
-@media(max-width:768px){
-  /* Хедер: показать кнопку Забронировать */
-  .header-in{gap:8px}
-  .header-in .btn-sm{display:inline-flex;font-size:12px;padding:8px 12px;white-space:nowrap}
-  .logo{flex:1;white-space:nowrap;font-size:17px}
-  .hero-in{
-    position:absolute;bottom:24px;
-    left:50%;transform:translateX(-50%);
-    top:auto;width:calc(100% - 40px);
-  }
-  .hero-in .btn-hero{min-width:0;width:100%;text-align:center}
 
-  /* Сетки */
+/* ── МОБИЛЬНАЯ ВЕРСИЯ (≤768px) ── */
+@media(max-width:768px){
+
+  /* ─ Хедер ─ */
+  .header-in{gap:10px}
+  .logo{flex:1;white-space:nowrap;font-size:17px;letter-spacing:.01em}
+  /* Кнопка "Узнать подробности" в хедере скрыта на мобильном — она есть в меню */
+  .header-in .btn-sm{display:none !important}
+  .theme-toggle{width:32px;height:32px;font-size:16px}
+
+  /* ─ Герой: кнопка идёт ПОД изображением, не поверх текста ─ */
+  .hero{display:flex;flex-direction:column;overflow:visible;margin-bottom:0}
+  .hero-bg-img{order:1;width:100%;height:auto}
+  .hero-nav-cover{display:none}
+  .hero-in{
+    order:2;
+    position:static;
+    transform:none;
+    left:auto;bottom:auto;
+    width:100%;
+    padding:16px 20px;
+    background:var(--bg);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .hero-in .btn-hero{
+    min-width:0;
+    width:100%;
+    max-width:360px;
+    text-align:center;
+    padding:16px 24px;
+    font-size:13px;
+  }
+
+  /* ─ Подзаголовок ─ */
+  .s-tagline{padding:0 16px 0}
+  .tagline-box{padding:20px 20px;font-size:14px;line-height:1.7}
+
+  /* ─ Секции ─ */
+  .s,.s-alt{padding:40px 0}
+  .s-contact{min-height:220px;padding:36px 0}
+  #for-whom{padding-top:24px;padding-bottom:0}
+
+  /* ─ Типографика ─ */
+  .s-title{font-size:clamp(22px,7vw,34px) !important}
+  .eyebrow{font-size:10px;letter-spacing:.18em}
+
+  /* ─ Сетки → 1 колонка ─ */
   .audience-grid{grid-template-columns:1fr}
-  .results-grid{grid-template-columns:1fr}
+  .results-grid{grid-template-columns:1fr 1fr}
   .team-grid{grid-template-columns:1fr}
   .prog-grid{grid-template-columns:1fr}
   .prog-extras{grid-template-columns:1fr}
-  .elem-grid{grid-template-columns:1fr}
-  .footer-grid{grid-template-columns:1fr;gap:24px}
+  .footer-grid{grid-template-columns:1fr;gap:20px}
   .footer-bot{flex-direction:column;gap:8px;text-align:center}
-  .why-grid{grid-template-columns:1fr;gap:20px}
-  .why-vs{padding:0}
+  .why-grid{grid-template-columns:1fr;gap:16px}
+  .why-vs{display:none}
   .form-row{grid-template-columns:1fr}
-  .hero-actions{flex-direction:column;align-items:flex-start;gap:14px}
   .pricing-grid{max-width:100%}
+  .hero-actions{flex-direction:column;align-items:stretch;gap:12px}
 
-  /* Секции */
-  .s,.s-alt{padding:48px 0}
-  .s-contact{min-height:260px;padding:40px 0}
+  /* ─ Аудитория ─ */
+  .aud-card{padding:20px}
+  .aud-result{padding:28px 20px}
 
-  /* Фото ведущих */
-  .team-ph-img{max-height:320px}
+  /* ─ Почему Сатори ─ */
+  .why-label{margin-bottom:10px}
+  .why-quote{padding:20px 24px;font-size:16px}
 
-  /* Кнопки */
-  .btn-contact{font-size:15px;padding:16px 32px}
+  /* ─ Результаты ─ */
+  .res-card{width:100%}
 
+  /* ─ Методология ─ */
+  .steps{grid-template-columns:1fr;gap:12px}
+  .step{padding:18px 16px}
+
+  /* ─ Ведущие ─ */
+  .team-ph-img{max-height:280px;object-fit:cover}
+  .team-bio{padding:20px}
+  .team-together{padding:24px 20px}
+  .team-together p{font-size:16px}
+
+  /* ─ Программа ─ */
+  .day-card{padding:20px 16px}
+
+  /* ─ Место ─ */
+  .venue-quote{padding:24px}
+
+  /* ─ Кнопка контакта ─ */
+  .btn-contact{font-size:14px;padding:16px 28px;width:calc(100% - 40px);text-align:center}
+
+  /* ─ FAQ ─ */
+  .faq-q{font-size:16px;padding:16px 20px}
+  .faq-a p{padding:0 20px 18px}
+
+  /* ─ Футер ─ */
+  .footer{padding:40px 0 24px}
+  .footer-logo{font-size:18px}
 }
 
+/* ── МАЛЕНЬКИЕ ТЕЛЕФОНЫ (≤480px) ── */
 @media(max-width:480px){
-  .results-grid{grid-template-columns:1fr}
-  .elem-grid{grid-template-columns:1fr}
   .hero-circle{display:none}
-  .s-title{font-size:clamp(22px,7vw,32px)}
-  .footer-logo{font-size:17px}
-  .btn-contact{width:calc(100% - 40px);text-align:center}
+  .results-grid{grid-template-columns:1fr}
+  .s-title{font-size:clamp(20px,6.5vw,28px) !important}
+  .tagline-box{font-size:13px;padding:16px}
+  .aud-num{font-size:20px}
+  .footer-logo{font-size:16px}
+  .footer-bot{font-size:11px}
+  .step-n{font-size:24px}
+  .step h4{font-size:16px}
+  .res-card h4{font-size:16px}
 }
 
 /* ═══════════════════════════════════════
