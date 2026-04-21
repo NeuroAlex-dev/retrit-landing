@@ -627,6 +627,29 @@ body::before{
    СТОИМОСТЬ
 ═══════════════════════════════════════ */
 
+/* ─── ПОДЗАГОЛОВОК ─── */
+.s-tagline{
+  background:var(--bg);
+  padding:48px 20px;
+  display:flex;align-items:center;justify-content:center;
+}
+.tagline-box{
+  background:rgba(28,32,36,.72);
+  backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);
+  border-radius:14px;
+  padding:28px 40px;
+  max-width:620px;
+  text-align:center;
+  color:#fff;
+  font-size:17px;
+  line-height:1.75;
+}
+.tagline-box p{margin:0}
+.tagline-box p+p{margin-top:14px}
+@media(max-width:768px){
+  .tagline-box{padding:22px 24px;font-size:15px}
+}
+
 /* ─── СЕКЦИЯ КОНТАКТ ─── */
 .s-contact{
   position:relative;
@@ -1062,6 +1085,16 @@ body::before{
   <h1 style="position:absolute;opacity:0;pointer-events:none;left:-9999px">ЛАДожское Сатори — Трансформационный ретрит</h1>
   <div class="hero-in">
     <a href="#program" class="btn btn-primary btn-hero">Узнать о программе</a>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════
+  01b. ПОДЗАГОЛОВОК
+═════════════════════════════════════ -->
+<section class="s-tagline">
+  <div class="tagline-box rv">
+    <p>Чёткая перезагрузка для тех, кто чувствует:<br>жить по-старому больше не получается.</p>
+    <p>Сатори — это внезапная ясность. Не побег от дел,<br>а внутренняя опора.</p>
   </div>
 </section>
 
