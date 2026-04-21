@@ -425,16 +425,17 @@ body::before{
 }
 .step{
   background:var(--bg-card);border-radius:var(--r-lg);
-  padding:32px 24px;text-align:center;
+  padding:24px 20px;
   border:1px solid rgba(28,94,114,.07);
 }
+.step-head{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
 .step-n{
-  font-family:var(--serif);font-size:52px;font-weight:300;
-  color:var(--accent);opacity:.3;line-height:1;margin-bottom:12px;
+  font-family:var(--serif);font-size:32px;font-weight:300;
+  color:var(--accent);opacity:.4;line-height:1;flex-shrink:0;
 }
 .step h4{
   font-family:var(--serif);font-size:19px;font-weight:500;
-  color:var(--heading);margin-bottom:8px;
+  color:var(--heading);margin:0;
 }
 .step p{font-size:13px;color:var(--muted);line-height:1.65}
 .step-arr{
@@ -1218,21 +1219,18 @@ body::before{
 
     <div class="steps rv">
       <div class="step">
-        <div class="step-n">01</div>
-        <h4>Диагностика</h4>
+        <div class="step-head"><div class="step-n">01.</div><h4>Диагностика</h4></div>
         <p>Находим трещины в фундаменте — нерабочие программы мышления</p>
       </div>
       <div class="step-arr">→</div>
       <div class="step">
-        <div class="step-n">02</div>
-        <h4>Разрушение</h4>
+        <div class="step-head"><div class="step-n">02.</div><h4>Разрушение</h4></div>
         <p>Сносим аварийные конструкции — убираем то, что тормозит</p>
       </div>
       <div class="step-arr">→</div>
       <div class="step">
-        <div class="step-n">03</div>
-        <h4>Выстраивание нового</h4>
-        <p>Закладываем устойчивый фундамент под реальные цели</p>
+        <div class="step-head"><div class="step-n">03.</div><h4>Выстраивание нового</h4></div>
+        <p>Закладываем устойчивый фундамент. Обретение внутреннего ЛАДа и баланса</p>
       </div>
     </div>
 
