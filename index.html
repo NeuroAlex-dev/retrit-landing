@@ -204,12 +204,11 @@ body::before{
 .hero{
   position:relative;
   overflow:hidden;
+  margin-top:68px;
+  height:calc(100vh - 68px);
+  background:url('assets/ladoga-tor.jpg') center/cover no-repeat;
 }
-.hero-bg-img{
-  display:block;
-  width:100%;
-  height:auto;
-}
+.hero-bg-img{display:none}
 .hero-layer{display:none}
 .hero-water{
   position:absolute;bottom:0;left:0;right:0;height:35%;
@@ -849,24 +848,14 @@ body::before{
   .step-arr{display:none}
 }
 @media(max-width:768px){
-  /* Герой */
-  .hero{overflow:hidden;display:flex;flex-direction:column;padding-top:68px}
-  .hero-bg-img{width:100%;height:auto;display:block}
-.hero-img-book-overlay{
-    position:absolute;top:68px;right:0;
-    width:32%;height:40px;
-    z-index:5;display:block;
-  }
-
   /* Хедер: показать кнопку Забронировать */
   .header-in{gap:8px}
   .header-in .btn-sm{display:inline-flex;font-size:12px;padding:8px 12px;white-space:nowrap}
   .logo{flex:1;white-space:nowrap;font-size:17px}
   .hero-in{
-    position:relative;top:auto;left:auto;transform:none;
-    padding:16px 20px 20px;
-    background:var(--bg);
-    width:100%;box-sizing:border-box;
+    position:absolute;bottom:24px;
+    left:50%;transform:translateX(-50%);
+    top:auto;width:calc(100% - 40px);
   }
   .hero-in .btn-hero{min-width:0;width:100%;text-align:center}
 
