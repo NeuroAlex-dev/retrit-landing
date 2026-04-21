@@ -394,24 +394,27 @@ body::before{
    РЕЗУЛЬТАТЫ
 ═══════════════════════════════════════ */
 .results-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+  align-items:start;
 }
 .res-card{
-  padding:32px 24px;background:var(--bg-card);
+  padding:18px 20px;background:var(--bg-card);
   border-radius:var(--r-lg);
   border:1px solid rgba(28,94,114,.07);
   transition:transform var(--t),box-shadow var(--t);
+  display:inline-flex;flex-direction:column;align-self:start;
 }
 .res-card:hover{transform:translateY(-4px);box-shadow:var(--sh)}
+.res-head{display:flex;align-items:center;gap:10px;margin-bottom:6px}
 .res-glyph{
-  font-size:26px;color:var(--accent);
-  margin-bottom:16px;display:block;line-height:1;
+  font-size:22px;color:var(--accent);
+  flex-shrink:0;line-height:1;
 }
 .res-card h4{
-  font-family:var(--serif);font-size:20px;font-weight:500;
-  color:var(--heading);margin-bottom:8px;
+  font-family:var(--serif);font-size:18px;font-weight:500;
+  color:var(--heading);margin:0;
 }
-.res-card p{font-size:13px;color:var(--muted);line-height:1.65}
+.res-card p{font-size:13px;color:var(--muted);line-height:1.65;margin:0}
 
 /* ═══════════════════════════════════════
    ИНСТРУМЕНТЫ
@@ -1175,33 +1178,27 @@ body::before{
     <h2 class="s-title rv">Что вы получите</h2>
     <div class="results-grid">
       <div class="res-card rv">
-        <span class="res-glyph">◈</span>
-        <h4>Внутренняя опора</h4>
+        <div class="res-head"><span class="res-glyph">◈</span><h4>Внутренняя опора</h4></div>
         <p>Которую не отнимут никакие обстоятельства</p>
       </div>
       <div class="res-card rv rv-d1">
-        <span class="res-glyph">→</span>
-        <h4>Ясность направления</h4>
+        <div class="res-head"><span class="res-glyph">→</span><h4>Ясность направления</h4></div>
         <p>Куда двигаться, когда старые программы сломаны</p>
       </div>
       <div class="res-card rv rv-d2">
-        <span class="res-glyph">✦</span>
-        <h4>Энергия без выгорания</h4>
+        <div class="res-head"><span class="res-glyph">✦</span><h4>Энергия без выгорания</h4></div>
         <p>Ресурс, который восстанавливается сам</p>
       </div>
       <div class="res-card rv">
-        <span class="res-glyph">◎</span>
-        <h4>Баланс денег и души</h4>
+        <div class="res-head"><span class="res-glyph">◎</span><h4>Баланс материального и духовного</h4></div>
         <p>Материальное и духовное — не противоречие</p>
       </div>
       <div class="res-card rv rv-d1">
-        <span class="res-glyph">⊕</span>
-        <h4>Чёткие инструменты</h4>
+        <div class="res-head"><span class="res-glyph">⊕</span><h4>Эффективные инструменты</h4></div>
         <p>Работают в любой турбулентности</p>
       </div>
       <div class="res-card rv rv-d2">
-        <span class="res-glyph">◆</span>
-        <h4>Круг своих</h4>
+        <div class="res-head"><span class="res-glyph">◆</span><h4>Среда единомышленников</h4></div>
         <p>Люди, которые говорят на одном языке с вами</p>
       </div>
     </div>
