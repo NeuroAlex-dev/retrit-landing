@@ -205,10 +205,8 @@ body::before{
   position:relative;
   overflow:hidden;
   margin-top:68px;
-  height:calc(100vh - 68px);
-  background:url('assets/ladoga-tor.jpg') center 65%/cover no-repeat;
 }
-.hero-bg-img{display:none}
+.hero-bg-img{display:block;width:100%;height:auto}
 .hero-layer{display:none}
 .hero-water{
   position:absolute;bottom:0;left:0;right:0;height:35%;
@@ -228,8 +226,8 @@ body::before{
 
 .hero-in{
   position:absolute;z-index:2;
-  top:57%;left:50%;
-  transform:translate(-50%,-50%);
+  bottom:28px;left:50%;
+  transform:translateX(-50%);
   display:flex;flex-direction:column;align-items:center;
 }
 .hero-in .btn-hero{
@@ -1058,7 +1056,7 @@ body::before{
   01. HERO
 ═════════════════════════════════════ -->
 <section id="hero" class="hero">
-  <img src="assets/Satori.png" class="hero-bg-img" alt="ЛАДожское Сатори">
+  <img src="assets/ladoga-tor.jpg" class="hero-bg-img" alt="ЛАДожское Сатори">
   <div class="hero-nav-cover"></div>
   <a href="https://t.me/yara606" target="_blank" rel="noopener" class="hero-img-book-overlay" aria-label="Забронировать"></a>
   <h1 style="position:absolute;opacity:0;pointer-events:none;left:-9999px">ЛАДожское Сатори — Трансформационный ретрит</h1>
