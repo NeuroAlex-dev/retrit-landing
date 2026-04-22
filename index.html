@@ -280,33 +280,21 @@ body::before{
    HERO
 ═══════════════════════════════════════ */
 .hero{
-  position:relative;
-  overflow:hidden;
+  display:flex;
+  flex-direction:column;
   margin-top:68px;
 }
-.hero-bg-img{display:block;width:100%;height:auto}
+.hero-bg-img{display:block;width:100%;height:auto;order:1}
 .hero-layer{display:none}
-.hero-water{
-  position:absolute;bottom:0;left:0;right:0;height:35%;
-  background:linear-gradient(to top,rgba(28,94,114,.07),transparent);
-  will-change:transform;
-}
+.hero-water{display:none}
 /* Декоративные круги */
-.hero-circle{
-  position:absolute;border-radius:50%;
-  border:1px solid rgba(28,94,114,.08);
-  pointer-events:none;
-}
-.hero-circle-1{width:600px;height:600px;top:-200px;right:-200px;
-  background:radial-gradient(circle,rgba(224,124,40,.04),transparent 70%)}
-.hero-circle-2{width:300px;height:300px;bottom:80px;left:60%;
-  border-color:rgba(224,124,40,.1)}
+.hero-circle{display:none}
 
 .hero-in{
-  position:absolute;z-index:2;
-  bottom:28px;left:50%;
-  transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;
+  order:2;
+  display:flex;justify-content:center;align-items:center;
+  padding:24px 40px;
+  background:var(--bg);
 }
 .hero-in .btn-hero{
   min-width:260px;
@@ -964,29 +952,11 @@ body::before{
   .header-in .btn-sm{display:none !important}
   .theme-toggle{width:32px;height:32px;font-size:16px}
 
-  /* ─ Герой: кнопка идёт ПОД изображением, не поверх текста ─ */
-  .hero{display:flex;flex-direction:column;overflow:visible;margin-bottom:0}
-  .hero-bg-img{order:1;width:100%;height:auto}
-  .hero-nav-cover{display:none}
-  .hero-in{
-    order:2;
-    position:static;
-    transform:none;
-    left:auto;bottom:auto;
-    width:100%;
-    padding:16px 20px;
-    background:var(--bg);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-  }
+  /* ─ Герой на мобильном ─ */
+  .hero-in{padding:16px 20px}
   .hero-in .btn-hero{
-    min-width:0;
-    width:100%;
-    max-width:360px;
-    text-align:center;
-    padding:16px 24px;
-    font-size:13px;
+    min-width:0;width:100%;max-width:360px;
+    text-align:center;padding:16px 24px;font-size:13px;
   }
 
   /* ─ Подзаголовок ─ */
