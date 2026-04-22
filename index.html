@@ -12,7 +12,19 @@
   <meta property="og:locale" content="ru_RU">
   <meta name="theme-color" content="#F0EFEA">
   <script>
-    (function(){var t=localStorage.getItem('theme');if(t==='dark'){document.documentElement.setAttribute('data-theme','dark')}})();
+    (function(){
+      var t=localStorage.getItem('theme');
+      if(t==='dark'){document.documentElement.setAttribute('data-theme','dark')}
+      document.documentElement.classList.add('js');
+      /* Fallback: если нижний JS не загрузился — показать весь контент */
+      document.addEventListener('DOMContentLoaded',function(){
+        setTimeout(function(){
+          document.querySelectorAll('.rv,.rv-left,.rv-right,.rv-scale').forEach(function(el){
+            el.classList.add('on');
+          });
+        }, 800);
+      });
+    })();
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -201,11 +213,12 @@ body::before{
 @media(max-width:768px){.s-title{margin-bottom:36px}}
 
 /* ─── REVEAL ─── */
-.rv{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
-.rv.on{opacity:1;transform:none}
+.rv{opacity:1;transform:none;transition:opacity .7s ease,transform .7s ease}
 .rv-d1{transition-delay:.1s}
 .rv-d2{transition-delay:.2s}
 .rv-d3{transition-delay:.3s}
+.js .rv{opacity:0;transform:translateY(28px)}
+.js .rv.on{opacity:1;transform:none}
 
 /* ═══════════════════════════════════════
    HEADER
