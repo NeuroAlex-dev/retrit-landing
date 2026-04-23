@@ -1101,12 +1101,15 @@ body::before{
 .hero-badge{animation:badgeFloat 4s ease-in-out infinite}
 
 /* ─── REVEAL VARIANTS ─── */
-.rv-left{opacity:0;transform:translateX(-38px);transition:opacity .7s ease,transform .7s ease}
+.rv-left{opacity:1;transform:none;transition:opacity .7s ease,transform .7s ease}
 .rv-left.on{opacity:1;transform:none}
-.rv-right{opacity:0;transform:translateX(38px);transition:opacity .7s ease,transform .7s ease}
+.rv-right{opacity:1;transform:none;transition:opacity .7s ease,transform .7s ease}
 .rv-right.on{opacity:1;transform:none}
-.rv-scale{opacity:0;transform:scale(.92);transition:opacity .65s ease,transform .65s ease}
+.rv-scale{opacity:1;transform:none;transition:opacity .65s ease,transform .65s ease}
 .rv-scale.on{opacity:1;transform:scale(1)}
+.js .rv-left{opacity:0;transform:translateX(-38px)}
+.js .rv-right{opacity:0;transform:translateX(38px)}
+.js .rv-scale{opacity:0;transform:scale(.92)}
 .rv-d4{transition-delay:.4s}
 .rv-d5{transition-delay:.5s}
 
