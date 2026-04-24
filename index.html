@@ -1714,16 +1714,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.rv, .rv-left, .rv-right, .rv-scale').forEach(el => revObs.observe(el));
 
-  /* ── ПАРАЛЛАКС HERO ── */
-  const heroLayer = document.getElementById('heroLayer');
-  const heroWater = document.getElementById('heroWater');
-  window.addEventListener('scroll', () => {
-    const s = window.scrollY;
-    if (s < window.innerHeight * 1.5) {
-      heroLayer.style.transform = `translateY(${s * 0.25}px)`;
-      heroWater.style.transform = `translateY(${s * 0.12}px)`;
-    }
-  }, { passive: true });
 
   /* ── FAQ ── */
   document.querySelectorAll('.faq-q').forEach(btn => {
