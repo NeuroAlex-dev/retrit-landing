@@ -95,8 +95,8 @@
 [data-theme="dark"] .footer{background:linear-gradient(160deg,#0d1018 0%,#101420 100%)}
 [data-theme="dark"] .footer-bot{border-top-color:rgba(200,176,136,.1)}
 [data-theme="dark"] .aud-result{background:linear-gradient(135deg,rgba(155,32,32,.08),rgba(200,176,136,.06));border-color:rgba(200,176,136,.12)}
-[data-theme="dark"] .why-list li{background:var(--bg-card);border-color:rgba(200,176,136,.08)}
-[data-theme="dark"] .why-list.yes li{border-color:rgba(155,32,32,.25)}
+[data-theme="dark"] .why-item{background:var(--bg-card);border-color:rgba(200,176,136,.08)}
+[data-theme="dark"] .why-item.yes{border-color:rgba(155,32,32,.25)}
 [data-theme="dark"] .satori-note{background:rgba(200,176,136,.04);border-color:rgba(200,176,136,.15)}
 [data-theme="dark"] .team-together{background:linear-gradient(135deg,rgba(200,176,136,.05),rgba(155,32,32,.06));border-color:rgba(200,176,136,.1)}
 [data-theme="dark"] .pbonus{background:linear-gradient(135deg,rgba(155,32,32,.06),rgba(200,176,136,.05));border-color:rgba(200,176,136,.15)}
@@ -424,28 +424,28 @@ body::before{
 ═══════════════════════════════════════ */
 .why-grid{
   display:grid;grid-template-columns:1fr auto 1fr;
-  gap:40px;align-items:start;margin-bottom:44px;
+  column-gap:40px;row-gap:10px;align-items:stretch;margin-bottom:44px;
 }
 .why-label{
   font-size:11px;font-weight:700;letter-spacing:.2em;
-  text-transform:uppercase;margin-bottom:18px;
+  text-transform:uppercase;margin-bottom:4px;
 }
 .why-label.dim{color:var(--muted)}
 .why-label.bright{color:var(--accent)}
-.why-list{display:flex;flex-direction:column;gap:10px}
-.why-list li{
+.why-item{
   padding:8px 16px;border-radius:var(--r);
   font-size:14px;color:var(--muted);
   background:var(--bg-card);
   border:1px solid rgba(28,94,114,.06);
   transition:border-color var(--t);
+  display:flex;align-items:center;
 }
-.why-list.yes li{
+.why-item.yes{
   color:var(--heading);
   border-color:rgba(224,124,40,.18);
 }
 .why-vs{
-  display:flex;align-items:center;justify-content:center;padding-top:36px;
+  grid-row:2/6;display:flex;align-items:center;justify-content:center;
 }
 .why-vs span{
   font-family:var(--serif);font-size:36px;font-style:italic;
@@ -993,8 +993,9 @@ body::before{
   .prog-extras{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr;gap:20px}
   .footer-bot{flex-direction:column;gap:8px;text-align:center}
-  .why-grid{grid-template-columns:1fr;gap:16px}
+  .why-grid{grid-template-columns:1fr;row-gap:8px;column-gap:0}
   .why-vs{display:none}
+  .why-item{grid-column:1}
   .form-row{grid-template-columns:1fr}
   .pricing-grid{max-width:100%}
   .hero-actions{flex-direction:column;align-items:stretch;gap:12px}
@@ -1277,25 +1278,25 @@ body::before{
     <h2 class="s-title rv">Почему Сатори, а не ретрит</h2>
 
     <div class="why-grid">
-      <div class="rv-left">
-        <div class="why-label dim">Ретрит — это</div>
-        <ul class="why-list">
-          <li>Уединение и уход от повседневности</li>
-          <li>Расслабление</li>
-          <li>«Всё само наладится»</li>
-          <li>Получить состояние на ретрите легко, удержать его в обычной жизни — сложно</li>
-        </ul>
-      </div>
+      <div class="why-label dim rv-left">Ретрит — это</div>
       <div class="why-vs rv rv-d1"><span>vs</span></div>
-      <div class="rv-right rv-d2">
-        <div class="why-label bright">Сатори — это</div>
-        <ul class="why-list yes">
-          <li>Внезапная ясность</li>
-          <li>Трансформация мышления и восприятия</li>
-          <li>Эффективные инструменты</li>
-          <li>Стабильный результат без откатов к прежнему состоянию</li>
-        </ul>
-      </div>
+      <div class="why-label bright rv-right rv-d2">Сатори — это</div>
+
+      <div class="why-item rv-left">Уединение и уход от повседневности</div>
+      <div></div>
+      <div class="why-item yes rv-right">Внезапная ясность</div>
+
+      <div class="why-item rv-left">Расслабление</div>
+      <div></div>
+      <div class="why-item yes rv-right">Трансформация мышления и восприятия</div>
+
+      <div class="why-item rv-left">«Всё само наладится»</div>
+      <div></div>
+      <div class="why-item yes rv-right">Эффективные инструменты</div>
+
+      <div class="why-item rv-left">Получить состояние на ретрите легко, удержать его в обычной жизни — сложно</div>
+      <div></div>
+      <div class="why-item yes rv-right">Стабильный результат без откатов к прежнему состоянию</div>
     </div>
 
     <blockquote class="why-quote rv">
