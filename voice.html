@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Голосовой ввод — Claude Code</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #13151f;
+      color: #ddd8ce;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 24px;
+      gap: 16px;
+    }
+    h1 {
+      font-size: 18px;
+      font-weight: 500;
+      color: #c8b088;
+      letter-spacing: .05em;
+    }
+    select {
+      background: #1e2130;
+      color: #ddd8ce;
+      border: 1px solid #2e3248;
+      border-radius: 8px;
+      padding: 7px 14px;
+      font-size: 14px;
+      cursor: pointer;
+      outline: none;
+    }
+    .mic-btn {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      border: 2px solid #2e3248;
+      background: #1e2130;
+      cursor: pointer;
+      font-size: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+      user-select: none;
+    }
+    .mic-btn:hover { border-color: #E07C28; }
+    .mic-btn.recording {
+      background: #E07C28;
+      border-color: #E07C28;
+      animation: pulse 1.4s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(224,124,40,.4); }
+      50%       { box-shadow: 0 0 0 18px rgba(224,124,40,0); }
+    }
+    .status {
+      font-size: 13px;
+      color: #666;
+      height: 18px;
+      transition: color .2s;
+    }
+    .status.active { color: #E07C28; }
+    textarea {
+      width: 100%;
+      max-width: 580px;
+      min-height: 130px;
+      background: #1e2130;
+      border: 1px solid #2e3248;
+      border-radius: 12px;
+      padding: 14px 16px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: #ddd8ce;
+      resize: vertical;
+      outline: none;
+      transition: border-color .2s;
+    }
+    textarea:focus { border-color: #E07C28; }
+    .actions {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      max-width: 580px;
+    }
+    .btn {
+      flex: 1;
+      padding: 11px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background .2s;
+    }
+    .btn-copy { background: #E07C28; color: #fff; }
+    .btn-copy:hover { background: #BE5C10; }
+    .btn-clear { background: #1e2130; color: #888; border: 1px solid #2e3248; }
+    .btn-clear:hover { background: #2a2d40; }
+    .hint {
+      font-size: 12px;
+      color: #555;
+      text-align: center;
+      max-width: 400px;
+      line-height: 1.6;
+    }
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #2d6e2d;
+      color: #fff;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: 14px;
+      opacity: 0;
+      transition: opacity .3s;
+      pointer-events: none;
+    }
+    .toast.show { opacity: 1; }
+    .error { color: #e06060; font-size: 13px; text-align: center; }
+  </style>
+</head>
+<body>
+  <h1>🎤 Голосовой ввод для Claude Code</h1>
+
+  <select id="lang">
+    <option value="ru-RU">🇷🇺 Русский</option>
+    <option value="en-US">🇺🇸 English</option>
+  </select>
+
+  <button class="mic-btn" id="micBtn">🎤</button>
+  <div class="status" id="status">Нажми микрофон и говори</div>
+
+  <textarea id="transcript" placeholder="Здесь появится распознанный текст…"></textarea>
+
+  <div class="actions">
+    <button class="btn btn-copy" id="copyBtn">📋 Скопировать</button>
+    <button class="btn btn-clear" id="clearBtn">🗑 Очистить</button>
+  </div>
+
+  <p class="hint">Скопируй текст → переключись в VS Code → вставь в поле ввода Claude Code (Ctrl+V)</p>
+
+  <div class="toast" id="toast">✓ Скопировано в буфер обмена!</div>
+
+  <script>
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) {
+      document.getElementById('status').innerHTML =
+        '<span class="error">❌ Нужен Chrome. Web Speech API не поддерживается в этом браузере.</span>';
+      document.getElementById('micBtn').disabled = true;
+    }
+
+    const rec = SR ? new SR() : null;
+    let running = false;
+    let final = '';
+
+    if (rec) {
+      rec.continuous = true;
+      rec.interimResults = true;
+
+      rec.onresult = e => {
+        let interim = '';
+        for (let i = e.resultIndex; i < e.results.length; i++) {
+          if (e.results[i].isFinal) final += e.results[i].transcript + ' ';
+          else interim = e.results[i].transcript;
+        }
+        document.getElementById('transcript').value = final + interim;
+      };
+
+      rec.onerror = e => {
+        const s = document.getElementById('status');
+        s.textContent = '⚠️ ' + (e.error === 'not-allowed' ? 'Нет доступа к микрофону — разреши в Chrome' : e.error);
+        s.classList.remove('active');
+        stop();
+      };
+
+      rec.onend = () => { if (running) rec.start(); };
+    }
+
+    function start() {
+      final = document.getElementById('transcript').value;
+      if (final && !final.endsWith(' ')) final += ' ';
+      rec.lang = document.getElementById('lang').value;
+      rec.start();
+      running = true;
+      document.getElementById('micBtn').classList.add('recording');
+      document.getElementById('micBtn').textContent = '⏹';
+      const s = document.getElementById('status');
+      s.textContent = '🔴 Запись… говори!';
+      s.classList.add('active');
+    }
+
+    function stop() {
+      running = false;
+      if (rec) rec.stop();
+      document.getElementById('micBtn').classList.remove('recording');
+      document.getElementById('micBtn').textContent = '🎤';
+      const s = document.getElementById('status');
+      s.textContent = 'Готово. Скопируй и вставь в Claude Code.';
+      s.classList.remove('active');
+    }
+
+    document.getElementById('micBtn').addEventListener('click', () => {
+      running ? stop() : start();
+    });
+
+    document.getElementById('copyBtn').addEventListener('click', () => {
+      const text = document.getElementById('transcript').value.trim();
+      if (!text) return;
+      navigator.clipboard.writeText(text).then(() => {
+        const t = document.getElementById('toast');
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2200);
+      });
+    });
+
+    document.getElementById('clearBtn').addEventListener('click', () => {
+      document.getElementById('transcript').value = '';
+      final = '';
+      document.getElementById('status').textContent = 'Нажми микрофон и говори';
+      document.getElementById('status').classList.remove('active');
+    });
+  </script>
+</body>
+</html>

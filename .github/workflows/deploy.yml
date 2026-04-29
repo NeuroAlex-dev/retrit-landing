@@ -21,8 +21,10 @@ jobs:
             **/.git*
             **/.git*/**
             .github/**
+            .claude/**
             README.md
             brief.md
             project.md
             research.md
             vercel.json
+            voice.html
