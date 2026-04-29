@@ -22,10 +22,8 @@ jobs:
             **/.git*/**
             .github/**
             .claude/**
-            chrome-extension/**
             README.md
             brief.md
             project.md
             research.md
             vercel.json
-            voice.html
