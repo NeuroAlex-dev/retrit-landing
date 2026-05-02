@@ -16,14 +16,8 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./Landing/
           server-dir: /ladasatori.ru/public_html/
           exclude: |
             **/.git*
             **/.git*/**
-            .github/**
-            .claude/**
-            README.md
-            brief.md
-            project.md
-            research.md
-            vercel.json
